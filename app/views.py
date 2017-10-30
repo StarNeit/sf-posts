@@ -15,12 +15,14 @@ def success_basic():
 
         return render_template('success_basic.html', data = data['items'])
 
-@app.route('/success_oauth_mission', methods=['POST'])
+@app.route('/success_oauth_mission', methods=['GET'])
 def success_oauth():
-    if request.method == 'POST':
-        p = requests.post("https://stackexchange.com/oauth/access_token/json", {'client_id': 11134, 'code': 'oyQ39Uxiu7xeD3bjxnT02Q))', 'redirect_uri': 'https://radiant-springs-83002.herokuapp.com', 'client_secret': 'zrMV6ym0MSYNynpNkz9*vQ(('})
-        r = requests.get("http://api.stackexchange.com/2.2/users/"+request.form.get('id')+"/posts?order=desc&sort=activity&site=stackoverflow&token=Eghe9F09ndu2LvXmRJ4vaA))&key=bltjJ8PWcScpa5ORgXSBBA((")
-
-        data = json.loads(r.text)
-
+    if request.method == 'GET':
+        code = request.args.get('code')
+        p = requests.post("https://stackexchange.com/oauth/access_token/json", {'client_id': 11134, 'code': code, 'redirect_uri': 'https://radiant-springs-83002.herokuapp.com/success_oauth_mission', 'client_secret': 'zrMV6ym0MSYNynpNkz9*vQ(('})
+        token = json.loads(p.text)['access_token']
+        r = requests.get("https://api.stackexchange.com/2.2/me?key=bltjJ8PWcScpa5ORgXSBBA((&site=stackoverflow&order=desc&sort=reputation&access_token="+token+"&filter=default")
+        id = json.loads(r.text)['items'][0]['user_id']
+        res = requests.get("http://api.stackexchange.com/2.2/users/"+str(id)+"/posts?order=desc&sort=activity&site=stackoverflow")
+        data = json.loads(res.text)
         return render_template('success_oauth.html', data=data['items'])
