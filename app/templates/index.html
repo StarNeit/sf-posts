@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h2>Stack OverFlow Rest API Test Project</h2>
+  <form action="/" id="main-form" method="POST">
+      <div class="form-head">
+          <div class="row">
+              <div class="col-md-offset-2 col-md-8">
+                  <label for="user_id" class="input-control-label">Stack Overflow Users ID</label>
+                  <input name="id" type="number" class="input-control" id="user_id" required />
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-offset-4 col-md-4">
+                  <input type="button" class="input-button mission" id="get_posts_basic" value="Get my posts (basic mission)" />
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-offset-4 col-md-4">
+                  <input type="button" class="input-button oauth" id="get_posts_oauth"  value="Get my posts (OAuth mission)" />
+              </div>
+          </div>
+      </div>
+  </form>
+</div>
+{% endblock %}

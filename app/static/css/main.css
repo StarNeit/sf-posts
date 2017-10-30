@@ -1,0 +1,32 @@
+body {
+}
+.jumbotron {
+    margin: 30px 0px;
+}
+.form-head {
+    padding: 30px 0px;
+}
+.form-head .row {
+    margin: 10px 0px;
+}
+.form-head .input-control {
+    width: 100%;
+    height: 35px;
+}
+.form-head .input-button {
+    width: 100%;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    text-transform: capitalize;
+}
+.form-head .input-button.mission {
+    background: #5685e2;
+}
+.form-head .input-button.oauth {
+    background: #e25656;
+}
+footer p {
+    text-align: center;
+}
